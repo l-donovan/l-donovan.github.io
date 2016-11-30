@@ -4,13 +4,18 @@
 }
 
 @font-face {
-    font-family: "aileron-black-italic";
-    src: url("/font/aileron/Aileron-BlackItalic.otf");
+    font-family: "aileron-black";
+    src: url("/font/aileron/Aileron-Black.otf");
 }
 
 @font-face {
 	font-family: "aileron-light-italic";
 	src: url("/font/aileron/Aileron-LightItalic.otf");
+}
+
+@font-face {
+	font-family: "aileron-ultralight";
+	src: url("/font/aileron/Aileron-UltraLight.otf");
 }
 
 body {
@@ -26,7 +31,7 @@ hr {
 	border: 0;
 	border-top: 1px solid #F9F9F9;
 	width: 60%;
-	margin: 2vh 20%;
+	margin: 0 20%;
 	padding: 0;
 	text-align: center;
 }
@@ -50,11 +55,12 @@ hr {
 	color: #666;
 	font-size: 1.6em;
 	cursor: pointer;
+	text-decoration: none;
 }
 
 header {
 	position: relative;
-	height: 15vh;
+	height: 10vh;
 	float: left;
 	width: 100%;
 	background: #AAA;
@@ -65,56 +71,50 @@ header {
 	text-align: center;
 	width: 100%;
 	height: 100%;
-	font-size: 12.5vh;
+	font-size: 8.3vh;
 	color: #F9F9F9;
-	font-family: aileron-black-italic;
+	font-family: aileron-ultralight;
 	text-shadow: 0.1vw 0.1vw 5px #888;
 }
 
 #content {
 	position: relative;
 	float: left;
-	width: 100%;
+	width: 80%;
+	margin: 0 10%;
 }
 
 footer {
 	position: relative;
 	float: left;
-	height: 15vh;
-	width: 100%;
+	padding: 0.5vw;
+	height: 10vh;
+	width: calc(100% - 1vw);
 	background: #AAA;
 	color: #F9F9F9;
 }
 
+#footer-row-1 {
+	height: 70%;
+	width: 100%;
+	text-align: center;
+	vertical-align: bottom;
+}
+
+#footer-row-2 {
+	height: calc(30% - 0.75vh - 2px);
+	margin-top: 0.75vh;
+	width: 100%;
+	text-align: center;
+	color: #666;
+}
+
+sm { font-size: 80%; }
+
 #main {
 	position: relative;
-	width: 76%;
+	width: 96%;
 	left: 4%;
-	margin: 0 10%;
 }
 
-.content-block {
-	display: block;
-	position: relative;
-	margin: 1.25vw;
-	padding: 0.5vw;
-	float: left;
-	width: calc(100% - 3.5vw);
-	background: #DFDFDF;
-	box-shadow: 0.1vw 0.1vw 5px #888;
-}
-
-.content-header {
-	display: block;
-	position: relative;
-	width: calc(100% - 2.5vw);
-	float: left;
-	margin: 1.25vw;
-	margin-bottom: 0;
-	text-align: center;
-	font-family: aileron-light-italic;
-	font-size: 5vh;
-}
-
-.content-header::before { content: "• "; }
-.content-header::after  { content: " •"; }
+.img-circle { border-radius: 50%; }

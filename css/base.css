@@ -1,21 +1,21 @@
 @font-face {
     font-family: "aileron-regular";
-    src: url("/font/aileron/Aileron-Regular.otf");
+    src: url("../font/aileron/Aileron-Regular.otf");
 }
 
 @font-face {
     font-family: "aileron-black";
-    src: url("/font/aileron/Aileron-Black.otf");
+    src: url("../font/aileron/Aileron-Black.otf");
 }
 
 @font-face {
 	font-family: "aileron-light-italic";
-	src: url("/font/aileron/Aileron-LightItalic.otf");
+	src: url("../font/aileron/Aileron-LightItalic.otf");
 }
 
 @font-face {
 	font-family: "aileron-ultralight";
-	src: url("/font/aileron/Aileron-UltraLight.otf");
+	src: url("../font/aileron/Aileron-UltraLight.otf");
 }
 
 body {

@@ -212,8 +212,8 @@ export class WindowComponent implements OnInit {
   createResizeTouchEnd(comp: WindowComponent): (event: TouchEvent) => void {
     return function(_event: TouchEvent): void {
       // Deregister event handlers
-      document.onmouseup = null;
-      document.onmousemove = null;
+      document.ontouchend = null;
+      document.ontouchmove = null;
 
       // Draw window with new dimensions
       let width = comp.outline.nativeElement.clientWidth;

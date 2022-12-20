@@ -1,0 +1,15 @@
+<div class="menu-container" [hidden]="!menuOpen">
+  <app-start-menu></app-start-menu>
+</div>
+
+<div class="taskbar">
+  <div class="tab menu-button" [class.tab-selected]="menuOpen" (click)="menuClicked()">
+    <img src="/assets/img/windows.ico" />
+    <span>Start</span>
+  </div>
+  <div class="tab" *ngFor="let tab of tabs" [class.tab-selected]="!getTabById(tab.id).minimized"
+    (click)="tabClicked(tab.id)">
+    <i class="tab-icon"></i>
+    <span class="title">{{ tab.title }}</span>
+  </div>
+</div>

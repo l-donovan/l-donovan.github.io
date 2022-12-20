@@ -1,0 +1,261 @@
+@import "src/colors";
+
+.outline {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 1px dashed $w95-gray-light;
+  z-index: 2;
+}
+
+ /* Navbar container */
+.window .navbar {
+  overflow: hidden;
+  background-color: $w95-gray-light;
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: left;
+  align-content: center;
+  flex-direction: row;
+}
+
+.titlebar {
+  font-size: 1rem;
+  height: 1rem;
+  overflow: hidden;
+  background-color: $w95-blue;
+  color: #f9f9f9;
+  padding: 0.25rem;
+  cursor: default;
+
+  display: flex;
+  justify-content: left;
+  align-content: center;
+  flex-direction: row;
+}
+
+.titlebar-icon {
+  background-color: $w95-gray-light;
+  color: black;
+
+  text-align: center;
+  margin: 0.1em;
+  border: 1px outset #f0f0f0;
+  width: 0.8rem;
+  height: 0.8rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  font-family: marlett;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  flex: 1;
+}
+
+.titlebar-icon:active {
+  border-style: inset;
+}
+
+/* Links inside the navbar */
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 0.5em 1em;
+  text-decoration: none;
+}
+
+/* The dropdown container */
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+/* Dropdown button */
+.dropdown .dropdown-button {
+  outline: none;
+  border: none;
+  font-size: 16px;
+  color: black;
+  padding: 0.1em 0.4em;
+  background-color: inherit;
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0.2em; /* Important for vertical align on mobile phones */
+  margin-bottom: 0;
+}
+
+/* Add a red background color to navbar links on hover */
+.navbar a:hover, .dropdown:hover .dropdown-button {
+  background-color: $w95-gray-dark;
+}
+
+
+.header-windows {
+  font-weight: 900;
+}
+
+.header-95 {
+  color: white;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  margin: 0em 2em 3em 0em;
+  border-color: #ddd;
+  border-style: outset;
+  background-color: $w95-gray-light;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  float: none;
+  display: block;
+  color: black;
+  padding: 0.25em;
+  text-decoration: none;
+  text-align: left;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: $w95-gray-dark;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.content-container {
+  max-height: calc(100% - 3rem);
+  background-color: $w95-gray-light;
+  padding: 0 0.4em 0.4em 0.4em;
+}
+
+.content {
+  padding: 0.5rem 1rem;
+  box-shadow: inset 2px 2px 1px $w95-gray-dark, inset -2px -2px 1px $w95-gray-dark;
+  -webkit-box-shadow: inset 2px 2px 1px $w95-gray-dark, inset -2px -2px 1px $w95-gray-dark;
+  -moz-box-shadow: inset 2px 2px 1px $w95-gray-dark, inset -2px -2px 1px $w95-gray-dark;
+}
+
+.resize-bottom {
+  cursor: ns-resize;
+  position: absolute;
+  bottom: -5px;
+  width: 100%;
+  height: 5px;
+}
+
+.resize-bottom-left {
+  cursor: nesw-resize;
+  position: absolute;
+  bottom: -5px;
+  left: -4px;
+  width: 5px;
+  height: 5px;
+}
+
+.resize-bottom-right {
+  cursor: nwse-resize;
+  position: absolute;
+  bottom: -5px;
+  right: -4px;
+  width: 5px;
+  height: 5px;
+}
+
+.resize-top {
+  cursor: ns-resize;
+  position: absolute;
+  top: -5px;
+  width: 100%;
+  height: 5px;
+}
+
+.resize-top-left {
+  cursor: nwse-resize;
+  position: absolute;
+  top: -5px;
+  left: -4px;
+  width: 5px;
+  height: 5px;
+}
+
+.resize-top-right {
+  cursor: nesw-resize;
+  position: absolute;
+  top: -5px;
+  right: -4px;
+  width: 5px;
+  height: 5px;
+}
+
+.resize-left {
+  cursor: ew-resize;
+  position: absolute;
+  left: -4px;
+  top: 0px;
+  width: 5px;
+  height: 100%;
+}
+
+.resize-right {
+  cursor: ew-resize;
+  position: absolute;
+  right: -4px;
+  top: 0px;
+  width: 5px;
+  height: 100%;
+}
+
+.window {
+  display: flex;
+  flex-flow: column;
+
+  resize: both;
+  border: 3px outset #f0f0f0;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.window .header {
+  display: flex;
+  flex: 0 0 auto;
+  justify-content: left;
+  align-content: center;
+  flex-direction: row;
+
+  font-size: 1rem;
+  height: 1rem;
+  overflow: hidden;
+  background-color: $w95-blue;
+  color: #f9f9f9;
+  padding: 0.25rem;
+  cursor: default;
+}
+
+.window .content-container {
+  flex: 1 1 auto;
+  background-color: $w95-gray-light;
+  overflow: hidden;
+}

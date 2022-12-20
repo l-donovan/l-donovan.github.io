@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+
+@font-face {
+  font-family: w95fa;
+  src: url(assets/font/W95FA.otf) format("opentype");
+}
+
+@font-face {
+  font-family: marlett;
+  src: url(assets/font/marlett.ttf) format("truetype");
+}
+
+* {
+  font-family: w95fa;
+}

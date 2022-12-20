@@ -1,0 +1,33 @@
+<div class="outline" #outline></div>
+<div class="window" #window>
+  <div class="header">
+    <span class="title" (mousedown)="moveMouseDown($event)">{{ title }}</span>
+    <span class="titlebar-icon" (click)="doWindowAction('minimize')">0</span>
+    <span class="titlebar-icon" (click)="doWindowAction('resize')">1</span>
+    <span class="titlebar-icon" (click)="doWindowAction('close')">r</span>
+  </div>
+  <div class="navbar">
+    <div class="dropdown" *ngFor="let menu of menus">
+      <button class="dropdown-button">
+        {{ menu.name }}
+      </button>
+      <div class="dropdown-content">
+        <a (click)="onMenuSelect(item.action)" *ngFor="let item of menu.items">{{ item.name }}</a>
+      </div>
+    </div>
+  </div>
+  <div class="content-container">
+    <div class="content">
+      <h1>Welcome to <span class="header-windows">LukeOS</span>&nbsp;<span class="header-95">95</span></h1>
+      <span>This is a test</span>
+    </div>
+  </div>
+  <div class="resize-bottom" (mousedown)="resizeMouseDown($event, 'bottom')"></div>
+  <div class="resize-bottom-left" (mousedown)="resizeMouseDown($event, 'bottom-left')"></div>
+  <div class="resize-bottom-right" (mousedown)="resizeMouseDown($event, 'bottom-right')"></div>
+  <div class="resize-top" (mousedown)="resizeMouseDown($event, 'top')"></div>
+  <div class="resize-top-left" (mousedown)="resizeMouseDown($event, 'top-left')"></div>
+  <div class="resize-top-right" (mousedown)="resizeMouseDown($event, 'top-right')"></div>
+  <div class="resize-left" (mousedown)="resizeMouseDown($event, 'left')"></div>
+  <div class="resize-right" (mousedown)="resizeMouseDown($event, 'right')"></div>
+</div>

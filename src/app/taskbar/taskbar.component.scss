@@ -1,0 +1,76 @@
+@import "src/colors";
+
+// We don't want text selectable by default
+* {
+  cursor: default;
+
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+.taskbar {
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  flex-direction: row;
+
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 2rem;
+
+  background: $w95-gray-light;
+
+  border-top: 2px outset #e7e0e7;
+}
+
+.tab, .tab-selected {
+  display: flex;
+  align-items: center;
+
+  font-size: 1rem;
+  background: #bfb8bf;
+  height: 1.35rem;
+
+  margin: 0.1rem;
+  padding: 0 1rem;
+}
+
+.tab {
+  border: 2px outset #e7e0e7;
+}
+
+.tab-selected {
+  border: 2px inset #e7e0e7;
+}
+
+.taskbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  flex-wrap: wrap;
+}
+
+.menu-button > img {
+  height: 1.3rem;
+}
+
+.menu-button > span {
+  margin-left: 0.5rem;
+}
+
+.menu-container {
+  z-index: 1;
+  position: absolute;
+
+  left: 0.2rem;
+  bottom: 1.9rem;
+}

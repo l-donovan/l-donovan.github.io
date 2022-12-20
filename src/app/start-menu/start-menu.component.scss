@@ -1,0 +1,46 @@
+@import "src/colors";
+
+.menu-container {
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
+  flex-direction: row;
+
+  min-height: 200px;
+  width: 16rem;
+
+  border: 3px outset #e7e0e7;
+}
+
+.main-menu-container {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  flex: 1;
+
+  padding-left: 0.75rem;
+
+  background: $w95-gray-1;
+}
+
+.accent-text {
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex: 0 0 15px;
+
+  min-width: 0;
+
+  padding: 0.5rem;
+  padding-bottom: 3.5rem;
+
+  background: $w95-gray-0;
+  color: $w95-gray-1;
+}
+
+.accent-text > span {
+  transform: rotate(-90deg);
+  white-space: nowrap;
+}

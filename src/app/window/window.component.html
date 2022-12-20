@@ -1,7 +1,7 @@
 <div class="outline" #outline></div>
 <div class="window" #window>
   <div class="header">
-    <span class="title" (mousedown)="moveMouseDown($event)">{{ title }}</span>
+    <span class="title" (mousedown)="moveMouseDown($event)" (touchstart)="moveTouchStart($event)">{{ title }}</span>
     <span class="titlebar-icon" (click)="doWindowAction('minimize')">0</span>
     <span class="titlebar-icon" (click)="doWindowAction('resize')">1</span>
     <span class="titlebar-icon" (click)="doWindowAction('close')">r</span>
@@ -22,12 +22,20 @@
       <span>This is a test</span>
     </div>
   </div>
-  <div class="resize-bottom" (mousedown)="resizeMouseDown($event, 'bottom')"></div>
-  <div class="resize-bottom-left" (mousedown)="resizeMouseDown($event, 'bottom-left')"></div>
-  <div class="resize-bottom-right" (mousedown)="resizeMouseDown($event, 'bottom-right')"></div>
-  <div class="resize-top" (mousedown)="resizeMouseDown($event, 'top')"></div>
-  <div class="resize-top-left" (mousedown)="resizeMouseDown($event, 'top-left')"></div>
-  <div class="resize-top-right" (mousedown)="resizeMouseDown($event, 'top-right')"></div>
-  <div class="resize-left" (mousedown)="resizeMouseDown($event, 'left')"></div>
-  <div class="resize-right" (mousedown)="resizeMouseDown($event, 'right')"></div>
+  <div class="resize-bottom" (mousedown)="resizeMouseDown($event, 'bottom')"
+    (touchstart)="resizeTouchStart($event, 'bottom')"></div>
+  <div class="resize-bottom-left" (mousedown)="resizeMouseDown($event, 'bottom-left')"
+    (touchstart)="resizeTouchStart($event, 'bottom-left')"></div>
+  <div class="resize-bottom-right" (mousedown)="resizeMouseDown($event, 'bottom-right')"
+    (touchstart)="resizeTouchStart($event, 'bottom-right')"></div>
+  <div class="resize-top" (mousedown)="resizeMouseDown($event, 'top')" (touchstart)="resizeTouchStart($event, 'top')">
+  </div>
+  <div class="resize-top-left" (mousedown)="resizeMouseDown($event, 'top-left')"
+    (touchstart)="resizeTouchStart($event, 'top-left')"></div>
+  <div class="resize-top-right" (mousedown)="resizeMouseDown($event, 'top-right')"
+    (touchstart)="resizeTouchStart($event, 'top-right')"></div>
+  <div class="resize-left" (mousedown)="resizeMouseDown($event, 'left')"
+    (touchstart)="resizeTouchStart($event, 'left')"></div>
+  <div class="resize-right" (mousedown)="resizeMouseDown($event, 'right')"
+    (touchstart)="resizeTouchStart($event, 'right')"></div>
 </div>

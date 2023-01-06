@@ -1,5 +1,8 @@
-<app-window *ngFor="let window of windows" [id]="window.id" [title]="window.title" [menus]="window.menus"
-  [hidden]="window.minimized" (windowAction)="handleWindowAction(window.id, $event)">
-</app-window>
-<app-desktop (shortcutAction)="handleShortcutAction($event)"></app-desktop>
-<app-taskbar [tabs]="windows"></app-taskbar>
+<div class="app-container">
+  <app-window *ngFor="let window of windows" [id]="window.id" [title]="window.title" [icon]="window.icon"
+    [menus]="window.menus" [hidden]="window.minimized" (windowAction)="handleWindowAction(window.id, $event)">
+  </app-window>
+  <app-desktop (shortcutAction)="handleShortcutAction($event)">
+  </app-desktop>
+  <app-taskbar [tabs]="windows"></app-taskbar>
+</div>

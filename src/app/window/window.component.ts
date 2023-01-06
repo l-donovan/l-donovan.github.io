@@ -2,6 +2,9 @@ import {
   Component, OnInit, ElementRef, ViewChild, Renderer2,
   Input, Output, EventEmitter } from '@angular/core';
 
+type Nullable<T> = T | null;
+type Handler<T> = (event: T) => void; 
+
 @Component({
   selector: 'app-window',
   templateUrl: './window.component.html',
@@ -12,7 +15,11 @@ export class WindowComponent implements OnInit {
   @ViewChild('window') window: ElementRef<HTMLDivElement>;
 
   @Input() title = 'untitled';
-  @Input() id = -1;
+  @Input() icon = "";
+
+  @Input() draggable = true;
+  @Input() resizable = true;
+
   @Input() menus = [
     {
       "name": "File",
@@ -51,15 +58,40 @@ export class WindowComponent implements OnInit {
   startH = 0;
   newW = 0;
   newH = 0;
-
-  draggable = true;
-  resizable = true;
+  oldWidth = 0;
+  oldHeight = 0;
+  maximized = false;
 
   constructor(private renderer: Renderer2) {
   }
 
   doWindowAction(action: string) {
-    this.windowAction.emit(action);
+    if (action === "resize") {
+      if (this.maximized) {
+        this.renderer.setStyle(this.window.nativeElement, 'top', this.posY + 'px');
+        this.renderer.setStyle(this.window.nativeElement, 'left', this.posX + 'px');
+        this.renderer.setStyle(this.window.nativeElement, 'width', this.oldWidth + 'px');
+        this.renderer.setStyle(this.window.nativeElement, 'height', this.oldHeight + 'px');
+      } else {
+        this.oldWidth = this.window.nativeElement.clientWidth;
+        this.oldHeight = this.window.nativeElement.clientHeight;
+
+        let width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        let height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+        width -= 6;
+        height -= 34 + 6;
+
+        this.renderer.setStyle(this.window.nativeElement, 'top', '0');
+        this.renderer.setStyle(this.window.nativeElement, 'left', '0');
+        this.renderer.setStyle(this.window.nativeElement, 'width', width + 'px');
+        this.renderer.setStyle(this.window.nativeElement, 'height', height + 'px');
+      }
+
+      this.maximized = !this.maximized;
+    } else {
+      this.windowAction.emit(action);
+    }
   }
 
   ngOnInit(): void {
@@ -87,8 +119,8 @@ export class WindowComponent implements OnInit {
     let width = this.window.nativeElement.clientWidth;
     let height = this.window.nativeElement.clientHeight;
     this.renderer.setStyle(this.outline.nativeElement, 'display', 'block');
-    this.renderer.setStyle(this.outline.nativeElement, 'width', width + 'px')
-    this.renderer.setStyle(this.outline.nativeElement, 'height', height + 'px')
+    this.renderer.setStyle(this.outline.nativeElement, 'width', width + 'px');
+    this.renderer.setStyle(this.outline.nativeElement, 'height', height + 'px');
 
     // Register event handlers
     document.onmouseup = this.createMouseUp(this);
@@ -106,7 +138,7 @@ export class WindowComponent implements OnInit {
     let touch = event.touches.item(0);
 
     if (touch === null) {
-      console.error('No touching!')
+      console.error('No touching!');
       return;
     }
 
@@ -119,15 +151,15 @@ export class WindowComponent implements OnInit {
     let width = this.window.nativeElement.clientWidth;
     let height = this.window.nativeElement.clientHeight;
     this.renderer.setStyle(this.outline.nativeElement, 'display', 'block');
-    this.renderer.setStyle(this.outline.nativeElement, 'width', width + 'px')
-    this.renderer.setStyle(this.outline.nativeElement, 'height', height + 'px')
+    this.renderer.setStyle(this.outline.nativeElement, 'width', width + 'px');
+    this.renderer.setStyle(this.outline.nativeElement, 'height', height + 'px');
 
     // Register event handlers
     document.ontouchend = this.createTouchEnd(this);
     document.ontouchmove = this.createTouchMove(this);
   }
 
-  createMouseUp(comp: WindowComponent): (event: MouseEvent) => void {
+  createMouseUp(comp: WindowComponent): Nullable<Handler<MouseEvent>> {
     return function(_event: MouseEvent): void {
       // Deregister event handlers
       document.onmouseup = null;
@@ -142,7 +174,7 @@ export class WindowComponent implements OnInit {
     }
   }
 
-  createTouchEnd(comp: WindowComponent): (event: TouchEvent) => void {
+  createTouchEnd(comp: WindowComponent): Nullable<Handler<TouchEvent>> {
     return function(_event: TouchEvent): void {
       // Deregister event handlers
       document.ontouchstart = null;
@@ -157,7 +189,7 @@ export class WindowComponent implements OnInit {
     }
   }
 
-  createMouseMove(comp: WindowComponent): (event: MouseEvent) => void {
+  createMouseMove(comp: WindowComponent): Nullable<Handler<MouseEvent>> {
     return function(event: MouseEvent) {
       event = event || window.event;
       event.preventDefault();
@@ -170,7 +202,7 @@ export class WindowComponent implements OnInit {
     }
   }
 
-  createTouchMove(comp: WindowComponent): (event: TouchEvent) => void {
+  createTouchMove(comp: WindowComponent): Nullable<Handler<TouchEvent>> {
     return function(event: TouchEvent) {
       event = event || window.event;
       event.preventDefault();
@@ -178,7 +210,7 @@ export class WindowComponent implements OnInit {
       let touch = event.touches.item(0);
 
       if (touch === null) {
-        console.error('No touching!')
+        console.error('No touching!');
         return;
       }
 
@@ -190,7 +222,7 @@ export class WindowComponent implements OnInit {
     }
   }
 
-  createResizeMouseUp(comp: WindowComponent): (event: MouseEvent) => void {
+  createResizeMouseUp(comp: WindowComponent): Nullable<Handler<MouseEvent>> {
     return function(_event: MouseEvent): void {
       // Deregister event handlers
       document.onmouseup = null;
@@ -199,8 +231,8 @@ export class WindowComponent implements OnInit {
       // Draw window with new dimensions
       let width = comp.outline.nativeElement.clientWidth;
       let height = comp.outline.nativeElement.clientHeight;
-      comp.renderer.setStyle(comp.window.nativeElement, 'width', width + 'px')
-      comp.renderer.setStyle(comp.window.nativeElement, 'height', height + 'px')
+      comp.renderer.setStyle(comp.window.nativeElement, 'width', width + 'px');
+      comp.renderer.setStyle(comp.window.nativeElement, 'height', height + 'px');
       comp.renderer.setStyle(comp.window.nativeElement, 'top', comp.posY + 'px');
       comp.renderer.setStyle(comp.window.nativeElement, 'left', comp.posX + 'px');
 
@@ -209,7 +241,7 @@ export class WindowComponent implements OnInit {
     }
   }
 
-  createResizeTouchEnd(comp: WindowComponent): (event: TouchEvent) => void {
+  createResizeTouchEnd(comp: WindowComponent): Nullable<Handler<TouchEvent>> {
     return function(_event: TouchEvent): void {
       // Deregister event handlers
       document.ontouchend = null;
@@ -218,8 +250,8 @@ export class WindowComponent implements OnInit {
       // Draw window with new dimensions
       let width = comp.outline.nativeElement.clientWidth;
       let height = comp.outline.nativeElement.clientHeight;
-      comp.renderer.setStyle(comp.window.nativeElement, 'width', width + 'px')
-      comp.renderer.setStyle(comp.window.nativeElement, 'height', height + 'px')
+      comp.renderer.setStyle(comp.window.nativeElement, 'width', width + 'px');
+      comp.renderer.setStyle(comp.window.nativeElement, 'height', height + 'px');
       comp.renderer.setStyle(comp.window.nativeElement, 'top', comp.posY + 'px');
       comp.renderer.setStyle(comp.window.nativeElement, 'left', comp.posX + 'px');
 
@@ -228,7 +260,7 @@ export class WindowComponent implements OnInit {
     }
   }
 
-  createResizeMouseMove(comp: WindowComponent, direction: string): (event: MouseEvent) => void {
+  createResizeMouseMove(comp: WindowComponent, direction: string): Nullable<Handler<MouseEvent>> {
     return function(event: MouseEvent) {
       event = event || window.event;
       event.preventDefault();
@@ -308,8 +340,8 @@ export class WindowComponent implements OnInit {
     this.startW = width;
     this.startH = height;
     this.renderer.setStyle(this.outline.nativeElement, 'display', 'block');
-    this.renderer.setStyle(this.outline.nativeElement, 'width', width + 'px')
-    this.renderer.setStyle(this.outline.nativeElement, 'height', height + 'px')
+    this.renderer.setStyle(this.outline.nativeElement, 'width', width + 'px');
+    this.renderer.setStyle(this.outline.nativeElement, 'height', height + 'px');
 
     // Register event handlers
     document.onmouseup = this.createResizeMouseUp(this);
@@ -327,7 +359,7 @@ export class WindowComponent implements OnInit {
     let touch = event.touches.item(0);
 
     if (touch === null) {
-      console.error('No touching!')
+      console.error('No touching!');
       return;
     }
 
@@ -342,8 +374,8 @@ export class WindowComponent implements OnInit {
     this.startW = width;
     this.startH = height;
     this.renderer.setStyle(this.outline.nativeElement, 'display', 'block');
-    this.renderer.setStyle(this.outline.nativeElement, 'width', width + 'px')
-    this.renderer.setStyle(this.outline.nativeElement, 'height', height + 'px')
+    this.renderer.setStyle(this.outline.nativeElement, 'width', width + 'px');
+    this.renderer.setStyle(this.outline.nativeElement, 'height', height + 'px');
 
     // Register event handlers
     document.ontouchend = this.createResizeTouchEnd(this);

@@ -15,20 +15,19 @@ export class TaskbarComponent implements OnInit {
   @Input() tabs = [
     {
       "id": this.getId(),
+      "icon": "/assets/img/paint.ico",
       "title": "paint",
       "minimized": false,
-    },
-    {
-      "id": this.getId(),
-      "title": "test",
-      "minimized": true,
-    },
+    }
   ];
 
   selectedTabs: Array<number> = [];
   menuOpen = false;
+  time: Date = new Date();
 
-  constructor() { }
+  constructor() {
+    setInterval(() => this.time = new Date(), 1000);
+  }
 
   ngOnInit(): void {
   }

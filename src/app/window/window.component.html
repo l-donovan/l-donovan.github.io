@@ -1,6 +1,7 @@
 <div class="outline" #outline></div>
 <div class="window" #window>
   <div class="header">
+    <img src="{{ icon }}" />
     <span class="title" (mousedown)="moveMouseDown($event)" (touchstart)="moveTouchStart($event)">{{ title }}</span>
     <span class="titlebar-icon" (click)="doWindowAction('minimize')">0</span>
     <span class="titlebar-icon" (click)="doWindowAction('resize')">1</span>
@@ -17,10 +18,7 @@
     </div>
   </div>
   <div class="content-container">
-    <div class="content" [innerHTML]="htmlContent">
-      <h1>Welcome to <span class="header-windows">LukeOS</span>&nbsp;<span class="header-95">95</span></h1>
-      <span>This is a test</span>
-    </div>
+    <div class="content" [innerHTML]="htmlContent"></div>
   </div>
   <div class="resize-bottom" (mousedown)="resizeMouseDown($event, 'bottom')"
     (touchstart)="resizeTouchStart($event, 'bottom')"></div>

@@ -12,13 +12,23 @@ export class DesktopComponent implements OnInit {
     return this.currentId++;
   }
 
+  @Input() windows = [];
   @Input() icons = [
     {
       "id": this.getId(),
-      "x": 100,
-      "y": 0,
-      "title": "Test",
-      "image": "/assets/img/computer.ico",
+      "x": 10,
+      "y": 10,
+      "title": "My Computer",
+      "image": "/assets/img/my_computer.ico",
+      "action": "",
+      "selected": false,
+    },
+    {
+      "id": this.getId(),
+      "x": 10,
+      "y": 120,
+      "title": "Recycle Bin",
+      "image": "/assets/img/recycle_bin_empty.ico",
       "action": "",
       "selected": false,
     }

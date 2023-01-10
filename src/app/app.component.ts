@@ -17,6 +17,7 @@ export class AppComponent {
   windows = [
     {
       "id": this.getId(),
+      "icon": "/assets/img/paint.ico",
       "title": "paint",
       "content": "dummy",
       "menus": [
@@ -71,6 +72,7 @@ export class AppComponent {
   handleShortcutAction(action: string): void {
     this.windows.push({
       "id": this.getId(),
+      "icon": "/assets/img/notepad.ico",
       "title": "Star Trek!",
       "content": "trek",
       "menus": [

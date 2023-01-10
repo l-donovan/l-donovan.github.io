@@ -18,6 +18,7 @@ export class AppComponent {
     {
       "id": this.getId(),
       "title": "paint",
+      "content": "dummy",
       "menus": [
         {
           "name": "File",
@@ -70,7 +71,8 @@ export class AppComponent {
   handleShortcutAction(action: string): void {
     this.windows.push({
       "id": this.getId(),
-      "title": "New Window!",
+      "title": "Star Trek!",
+      "content": "trek",
       "menus": [
         {
           "name": "File",

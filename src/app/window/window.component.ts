@@ -1,6 +1,8 @@
 import {
   Component, OnInit, ElementRef, ViewChild, Renderer2,
   Input, Output, EventEmitter } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { WindowContentService } from '../window-content.service';
 
 @Component({
   selector: 'app-window',
@@ -13,6 +15,7 @@ export class WindowComponent implements OnInit {
 
   @Input() title = 'untitled';
   @Input() id = -1;
+  @Input() content = '';
   @Input() menus = [
     {
       "name": "File",
@@ -51,11 +54,12 @@ export class WindowComponent implements OnInit {
   startH = 0;
   newW = 0;
   newH = 0;
+  htmlContent: SafeHtml;
 
   draggable = true;
   resizable = true;
 
-  constructor(private renderer: Renderer2) {
+  constructor(private renderer: Renderer2, private windowContent: WindowContentService, private sanitizer: DomSanitizer) {
   }
 
   doWindowAction(action: string) {
@@ -63,6 +67,8 @@ export class WindowComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.windowContent.getContent(this.content)
+        .subscribe((data: string) => this.htmlContent = this.sanitizer.bypassSecurityTrustHtml(data));
   }
 
   onMenuSelect(action: string): void {

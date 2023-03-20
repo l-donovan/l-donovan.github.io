@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, HostListener, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-desktop',
@@ -7,6 +7,9 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 })
 export class DesktopComponent implements OnInit {
   currentId = 0;
+  contextMenuOpen = false;
+  contextX = 0;
+  contextY = 0;
 
   getId(): number {
     return this.currentId++;
@@ -65,11 +68,27 @@ export class DesktopComponent implements OnInit {
     }
 
     this.icons.forEach(icon => icon.selected = icon.id == id);
+    this.contextMenuOpen = false;
   }
 
   launch(id: number): void {
     let icon = this.getIconById(id);
     this.shortcutAction.emit(icon.action);
+    this.select(-1);
+  }
+
+  @HostListener('contextmenu', ['$event'])
+  openContextMenu(event: MouseEvent): void {
+    event.preventDefault();
+
+    this.contextMenuOpen = true;
+    this.contextX = event.clientX;
+    this.contextY = event.clientY;
+  }
+
+  @HostListener('click', ['$event'])
+  deselect(event: MouseEvent): void {
+    event.preventDefault();
     this.select(-1);
   }
 }

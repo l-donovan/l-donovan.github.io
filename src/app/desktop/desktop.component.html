@@ -1,10 +1,10 @@
-<div class="background" (click)="select(-1)">
-  <div class="desktop-icon" *ngFor="let icon of icons" [class.selected]="icon.selected"
-    (click)="select(icon.id, $event)" (dblclick)="launch(icon.id)" [style.left]="icon.x + 'px'"
-    [style.top]="icon.y + 'px'">
-    <img class="desktop-icon-image" [src]="icon.image" />
-    <div class="desktop-icon-title">
-      {{ icon.title }}
-    </div>
+<div class="context-menu" [hidden]="!contextMenuOpen" [style.left]="contextX + 'px'" [style.top]="contextY + 'px'">
+  <app-context-menu></app-context-menu>
+</div>
+<div class="desktop-icon" *ngFor="let icon of icons" [class.selected]="icon.selected" (click)="select(icon.id, $event)"
+  (dblclick)="launch(icon.id)" [style.left]="icon.x + 'px'" [style.top]="icon.y + 'px'">
+  <img class="desktop-icon-image" [src]="icon.image" />
+  <div class="desktop-icon-title">
+    {{ icon.title }}
   </div>
 </div>

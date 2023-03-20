@@ -92,7 +92,6 @@
   background-color: inherit;
   font-family: inherit; /* Important for vertical align on mobile phones */
   margin: 0.2em; /* Important for vertical align on mobile phones */
-  margin-bottom: 0;
 }
 
 /* Add a red background color to navbar links on hover */
@@ -111,12 +110,11 @@
 
 /* Dropdown content (hidden by default) */
 .dropdown-content {
-  display: none;
   position: absolute;
   z-index: 1;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  margin: 0em 2em 3em 0em;
+  margin: -2px 2em 3em 0;
   border-color: #ddd;
   border-style: outset;
   background-color: $w95-gray-light;
@@ -135,11 +133,6 @@
 /* Add a grey background color to dropdown links on hover */
 .dropdown-content a:hover {
   background-color: $w95-gray-dark;
-}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-  display: block;
 }
 
 .content-container {
@@ -226,6 +219,8 @@
 }
 
 .window {
+  min-width: 200px;
+  min-height: 100px;
   display: flex;
   flex-flow: column;
 

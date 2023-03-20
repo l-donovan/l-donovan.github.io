@@ -9,10 +9,10 @@
   </div>
   <div class="navbar">
     <div class="dropdown" *ngFor="let menu of menus">
-      <button class="dropdown-button">
+      <button class="dropdown-button" (click)="onMenuTabSelect(menu.name)">
         {{ menu.name }}
       </button>
-      <div class="dropdown-content">
+      <div class="dropdown-content" [hidden]="selectedMenu != menu.name">
         <a (click)="onMenuSelect(item.action)" *ngFor="let item of menu.items">{{ item.name }}</a>
       </div>
     </div>

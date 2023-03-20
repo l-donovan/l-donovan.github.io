@@ -1,0 +1,50 @@
+@import "src/colors";
+
+.menu-container {
+}
+
+.menu-container {
+  min-height: 200px;
+  width: 10rem;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+
+  background: $w95-gray-1;
+  border: 3px outset #e7e0e7;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+}
+
+.menu-item > img {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.menu-item > span {
+  font-size: 1rem;
+}
+
+.menu-item > span:first-letter {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+}
+
+.menu-item::after {
+  font-family: marlett;
+  flex: 1;
+  text-align: right;
+  content: "4";
+  padding-right: 0.5rem;
+}
+
+.menu-item:hover {
+  color: white;
+  background: $w95-blue;
+}

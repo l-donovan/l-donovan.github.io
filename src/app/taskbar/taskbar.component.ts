@@ -15,7 +15,7 @@ export class TaskbarComponent implements OnInit {
   @Input() tabs = [
     {
       "id": this.getId(),
-      "icon": "/assets/img/paint.ico",
+      "icon": "paint.ico",
       "title": "paint",
       "minimized": false,
     }

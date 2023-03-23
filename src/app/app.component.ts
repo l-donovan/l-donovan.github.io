@@ -1,4 +1,14 @@
 import { Component } from '@angular/core';
+import { ProgramService } from './program.service';
+
+interface WindowDescription {
+    id: number;
+    icon: string;
+    title: string;
+    content: string;
+    minimized: boolean;
+    menus: any[];
+}
 
 @Component({
   selector: 'app-root',
@@ -14,39 +24,10 @@ export class AppComponent {
     return this.currentId++;
   }
 
-  windows = [
-    {
-      "id": this.getId(),
-      "icon": "/assets/img/paint.ico",
-      "title": "paint",
-      "content": "dummy",
-      "menus": [
-        {
-          "name": "File",
-          "items": [
-            {
-              "name": "New",
-              "action": "/file/new"
-            },
-            {
-              "name": "Open",
-              "action": ""
-            },
-            {
-              "name": "Save",
-              "action": ""
-            }
-          ]
-        },
-        {
-          "name": "Edit",
-          "items": [
-          ]
-        }
-      ],
-      "minimized": false,
-    }
-  ];
+  windows: WindowDescription[] = [];
+
+  constructor(private programService: ProgramService) {
+  }
 
   getWindowById(id: number) {
     return this.windows.find(win => win.id == id)!;
@@ -69,19 +50,26 @@ export class AppComponent {
     }
   }
 
-  handleShortcutAction(action: string): void {
-    this.windows.push({
-      "id": this.getId(),
-      "icon": "/assets/img/notepad.ico",
-      "title": "Star Trek!",
-      "content": "trek",
-      "menus": [
-        {
-          "name": "File",
-          "items": []
-        }
-      ],
-      "minimized": false,
+  handleShortcutAction(source: string): void {
+    this.programService.loadProgram(source).subscribe(program => {
+        this.windows.push({
+            "id": this.getId(),
+            "icon": program.window.icon,
+            "title": program.window.title,
+            "content": program.window.content,
+            "menus": [
+                {
+                    "name": "File",
+                    "items": [
+                        {
+                            "name": "New",
+                            "action": "/file/new"
+                        }
+                    ]
+                }
+            ],
+            "minimized": false,
+        });
     });
   }
 

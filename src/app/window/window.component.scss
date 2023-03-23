@@ -21,7 +21,6 @@
 }
 
 .titlebar {
-  font-size: 1rem;
   height: 1rem;
   overflow: hidden;
   background-color: $w95-blue;
@@ -38,20 +37,14 @@
 .titlebar-icon {
   background-color: $w95-gray-light;
   color: black;
-
   text-align: center;
   margin: 0.1em;
   border: 1px outset #f0f0f0;
   width: 0.8rem;
   height: 0.8rem;
   font-size: 0.75rem;
-  cursor: pointer;
+  cursor: default;
   font-family: marlett;
-
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 
 .title {
@@ -69,7 +62,6 @@
 /* Links inside the navbar */
 .navbar a {
   float: left;
-  font-size: 16px;
   color: white;
   text-align: center;
   padding: 0.5em 1em;
@@ -84,9 +76,9 @@
 
 /* Dropdown button */
 .dropdown .dropdown-button {
+  font-size: 1.0rem;
   outline: none;
   border: none;
-  font-size: 16px;
   color: black;
   padding: 0.1em 0.4em;
   background-color: inherit;
@@ -98,7 +90,6 @@
 .navbar a:hover, .dropdown:hover .dropdown-button {
   background-color: $w95-gray-dark;
 }
-
 
 .header-windows {
   font-weight: 900;
@@ -136,13 +127,15 @@
 }
 
 .content-container {
-  max-height: calc(100% - 3rem);
+  display: flex;
   background-color: $w95-gray-light;
   padding: 0 0.4em 0.4em 0.4em;
+  padding-top: 0.5rem;
 }
 
 .content {
-  padding: 0.5rem 1rem;
+  flex: 1 1 auto;
+  padding: 0.5rem;
   box-shadow: inset 2px 2px 1px $w95-gray-dark, inset -2px -2px 1px $w95-gray-dark;
   -webkit-box-shadow: inset 2px 2px 1px $w95-gray-dark, inset -2px -2px 1px $w95-gray-dark;
   -moz-box-shadow: inset 2px 2px 1px $w95-gray-dark, inset -2px -2px 1px $w95-gray-dark;
@@ -240,7 +233,6 @@
   align-content: center;
   flex-direction: row;
 
-  font-size: 1rem;
   height: 1rem;
   overflow: hidden;
   background-color: $w95-blue;

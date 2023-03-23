@@ -66,6 +66,7 @@ export class WindowComponent implements OnInit {
 
   oldHeight = 0;
   maximized = false;
+  selectedMenu = "";
 
   constructor(private renderer: Renderer2, private windowContent: WindowContentService, private sanitizer: DomSanitizer) {
   }
@@ -104,8 +105,17 @@ export class WindowComponent implements OnInit {
         .subscribe((data: string) => this.htmlContent = this.sanitizer.bypassSecurityTrustHtml(data));
   }
 
+  onMenuTabSelect(tab: string): void {
+    if (this.selectedMenu == tab) {
+      this.selectedMenu = "";
+    } else {
+      this.selectedMenu = tab;
+    }
+  }
+
   onMenuSelect(action: string): void {
     this.menuChoice.emit(action);
+    this.selectedMenu = "";
     console.log(action);
   }
 

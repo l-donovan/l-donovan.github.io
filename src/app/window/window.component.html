@@ -1,7 +1,7 @@
 <div class="outline" #outline></div>
 <div class="window" #window>
   <div class="header unselectable">
-    <img src="{{ icon }}" draggable="false" (mousedown)="moveMouseDown($event)" (touchstart)="moveTouchStart($event)">
+    <img src="/assets/img/{{ icon }}" draggable="false" (mousedown)="moveMouseDown($event)" (touchstart)="moveTouchStart($event)">
     <span class="title" (mousedown)="moveMouseDown($event)" (touchstart)="moveTouchStart($event)">{{ title }}</span>
     <span class="titlebar-icon" (click)="doWindowAction('minimize')">0</span>
     <span class="titlebar-icon" (click)="doWindowAction('resize')">1</span>

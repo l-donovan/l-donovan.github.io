@@ -1,4 +1,22 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ProgramService } from '../program.service';
+
+interface IconDescription {
+    x: number;
+    y: number;
+    source: string;
+}
+
+interface Icon {
+    id: number;
+    x: number;
+    y: number;
+    image: string;
+    title: string;
+    selected: boolean;
+    source: string;
+}
 
 @Component({
   selector: 'app-desktop',
@@ -12,31 +30,30 @@ export class DesktopComponent implements OnInit {
     return this.currentId++;
   }
 
-  @Input() windows = [];
-  @Input() icons = [
-    {
-      "id": this.getId(),
-      "x": 10,
-      "y": 10,
-      "title": "My Computer",
-      "image": "/assets/img/my_computer.ico",
-      "content": "trek",
-      "selected": false,
-    },
-    {
-      "id": this.getId(),
-      "x": 10,
-      "y": 120,
-      "title": "Recycle Bin",
-      "image": "/assets/img/recycle_bin_empty.ico",
-      "content": "welcome",
-      "selected": false,
-    }
-  ];
-
+  @Input() icons: Icon[] = [];
   @Output() shortcutAction = new EventEmitter<string>();
 
-  constructor() { }
+  constructor(private http: HttpClient, private programService: ProgramService) {
+    this.http.get("/assets/desktop.json").subscribe(resp => {
+        let desktop = resp as IconDescription[];
+
+        desktop.forEach(icon => {
+
+            this.programService.loadProgram(icon.source).subscribe(program => {
+                this.icons.push({
+                    "id": this.getId(),
+                    "x": icon.x,
+                    "y": icon.y,
+                    "image": program.desktop.icon,
+                    "title": program.desktop.title,
+                    "selected": false,
+                    "source": icon.source,
+                });
+            });
+        });
+    });
+  }
+
   ngOnInit(): void { }
 
   range(a: number, b: number | null = null): Array<number> {
@@ -69,7 +86,7 @@ export class DesktopComponent implements OnInit {
 
   launch(id: number): void {
     let icon = this.getIconById(id);
-    this.shortcutAction.emit(icon.content);
+    this.shortcutAction.emit(icon.source);
     this.select(-1);
   }
 }

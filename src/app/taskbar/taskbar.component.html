@@ -9,7 +9,7 @@
   </div>
   <div class="tab" *ngFor="let tab of tabs" [class.tab-selected]="!getTabById(tab.id).minimized"
     (click)="tabClicked(tab.id)">
-    <img src="{{ tab.icon }}" />
+    <img src="/assets/img/{{ tab.icon }}" />
     <span>{{ tab.title }}</span>
   </div>
   <div class="tab-filler"></div>

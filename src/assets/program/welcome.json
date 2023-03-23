@@ -1,0 +1,11 @@
+{
+    "desktop": {
+        "icon": "question_book.ico",
+        "title": "Welcome"
+    },
+    "window": {
+        "icon": "globe.ico",
+        "title": "Welcome!",
+        "content": "welcome"
+    }
+}

@@ -59,8 +59,13 @@ export class AppComponent {
             "content": program.window.content,
             "menus": [
                 {
-                "name": "File",
-                "items": []
+                    "name": "File",
+                    "items": [
+                        {
+                            "name": "New",
+                            "action": "/file/new"
+                        }
+                    ]
                 }
             ],
             "minimized": false,

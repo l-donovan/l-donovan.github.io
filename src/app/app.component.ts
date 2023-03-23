@@ -69,12 +69,12 @@ export class AppComponent {
     }
   }
 
-  handleShortcutAction(action: string): void {
+  handleShortcutAction(content: string): void {
     this.windows.push({
       "id": this.getId(),
       "icon": "/assets/img/notepad.ico",
       "title": "Star Trek!",
-      "content": "trek",
+      "content": content,
       "menus": [
         {
           "name": "File",

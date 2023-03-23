@@ -20,7 +20,7 @@ export class DesktopComponent implements OnInit {
       "y": 10,
       "title": "My Computer",
       "image": "/assets/img/my_computer.ico",
-      "action": "",
+      "content": "trek",
       "selected": false,
     },
     {
@@ -29,7 +29,7 @@ export class DesktopComponent implements OnInit {
       "y": 120,
       "title": "Recycle Bin",
       "image": "/assets/img/recycle_bin_empty.ico",
-      "action": "",
+      "content": "welcome",
       "selected": false,
     }
   ];
@@ -69,7 +69,7 @@ export class DesktopComponent implements OnInit {
 
   launch(id: number): void {
     let icon = this.getIconById(id);
-    this.shortcutAction.emit(icon.action);
+    this.shortcutAction.emit(icon.content);
     this.select(-1);
   }
 }

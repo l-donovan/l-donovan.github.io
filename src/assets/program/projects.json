@@ -1,0 +1,11 @@
+{
+    "desktop": {
+        "icon": "desk.ico",
+        "title": "My Projects"
+    },
+    "window": {
+        "icon": "desk.ico",
+        "title": "My Projects",
+        "content": "projects"
+    }
+}

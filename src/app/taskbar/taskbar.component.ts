@@ -1,11 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-taskbar',
   templateUrl: './taskbar.component.html',
   styleUrls: ['./taskbar.component.scss']
 })
-export class TaskbarComponent implements OnInit {
+export class TaskbarComponent {
   currentId = 0;
 
   getId(): number {
@@ -27,9 +27,6 @@ export class TaskbarComponent implements OnInit {
 
   constructor() {
     setInterval(() => this.time = new Date(), 1000);
-  }
-
-  ngOnInit(): void {
   }
 
   menuClicked(): void {

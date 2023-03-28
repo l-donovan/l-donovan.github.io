@@ -8,6 +8,7 @@ import { TaskbarComponent } from './taskbar/taskbar.component';
 import { StartMenuComponent } from './start-menu/start-menu.component';
 import { DesktopComponent } from './desktop/desktop.component';
 import { ContextMenuComponent } from './context-menu/context-menu.component';
+import { SafeHtmlPipe } from './safe-html.pipe';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ContextMenuComponent } from './context-menu/context-menu.component';
     TaskbarComponent,
     StartMenuComponent,
     DesktopComponent,
-    ContextMenuComponent
+    ContextMenuComponent,
+    SafeHtmlPipe
   ],
   imports: [
     BrowserModule,

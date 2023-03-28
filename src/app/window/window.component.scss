@@ -135,6 +135,7 @@
 
 .content {
   flex: 1 1 auto;
+  overflow-y: scroll;
   padding: 0.5rem;
   box-shadow: inset 2px 2px 1px $w95-gray-dark, inset -2px -2px 1px $w95-gray-dark;
   -webkit-box-shadow: inset 2px 2px 1px $w95-gray-dark, inset -2px -2px 1px $w95-gray-dark;
@@ -212,8 +213,10 @@
 }
 
 .window {
-  min-width: 200px;
-  min-height: 100px;
+  min-width: 14rem;
+  min-height: 12rem;
+  width: 35rem;
+  height: 30rem;
   display: flex;
   flex-flow: column;
 

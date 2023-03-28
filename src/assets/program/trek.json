@@ -1,10 +1,10 @@
 {
     "desktop": {
-        "icon": "desk.ico",
+        "icon": "globe.ico",
         "title": "Trek"
     },
     "window": {
-        "icon": "desk.ico",
+        "icon": "globe.ico",
         "title": "Star Trek!",
         "content": "trek"
     }

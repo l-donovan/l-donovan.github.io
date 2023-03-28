@@ -18,7 +18,7 @@
     </div>
   </div>
   <div class="content-container unselectable">
-    <div class="content" [innerHTML]="htmlContent"></div>
+    <div class="content" [innerHTML]="htmlContent | safeHtml"></div>
   </div>
   <div class="resize-bottom" (mousedown)="resizeMouseDown($event, 'bottom')"
     (touchstart)="resizeTouchStart($event, 'bottom')"></div>

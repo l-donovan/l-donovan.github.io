@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, HostListener, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, HostListener, Input, Output, EventEmitter } from '@angular/core';
 import { ProgramService } from '../program.service';
 
 interface IconDescription {
@@ -23,7 +23,7 @@ interface Icon {
   templateUrl: './desktop.component.html',
   styleUrls: ['./desktop.component.scss']
 })
-export class DesktopComponent implements OnInit {
+export class DesktopComponent {
   currentId = 0;
   contextMenuOpen = false;
   contextX = 0;
@@ -56,8 +56,6 @@ export class DesktopComponent implements OnInit {
         });
     });
   }
-
-  ngOnInit(): void { }
 
   range(a: number, b: number | null = null): Array<number> {
     let start: number;

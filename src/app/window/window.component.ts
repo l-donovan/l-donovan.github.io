@@ -1,7 +1,6 @@
 import {
   Component, OnInit, ElementRef, ViewChild, Renderer2,
   Input, Output, EventEmitter } from '@angular/core';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { WindowContentService } from '../window-content.service';
 
 type Nullable<T> = T | null;
@@ -62,14 +61,13 @@ export class WindowComponent implements OnInit {
   newW = 0;
   newH = 0;
   oldWidth = 0; 
-  htmlContent: SafeHtml;
+  htmlContent: string;
 
   oldHeight = 0;
   maximized = false;
   selectedMenu = "";
 
-  constructor(private renderer: Renderer2, private windowContent: WindowContentService, private sanitizer: DomSanitizer) {
-  }
+  constructor(private renderer: Renderer2, private windowContent: WindowContentService) {}
 
   doWindowAction(action: string) {
     if (action === "resize") {
@@ -102,7 +100,7 @@ export class WindowComponent implements OnInit {
 
   ngOnInit(): void {
     this.windowContent.getContent(this.content)
-        .subscribe((data: string) => this.htmlContent = this.sanitizer.bypassSecurityTrustHtml(data));
+        .subscribe((data: string) => this.htmlContent = data);
   }
 
   onMenuTabSelect(tab: string): void {

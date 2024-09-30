@@ -1,0 +1,11 @@
+{
+    "desktop": {
+        "icon": "msagent.png",
+        "title": "About Me"
+    },
+    "window": {
+        "icon": "msagent.png",
+        "title": "About Me",
+        "content": "about"
+    }
+}

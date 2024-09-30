@@ -11,5 +11,10 @@
       <img src="/assets/img/documents.ico" />
       <span>Documents</span>
     </div>
+    <div class="menu-item" *ngFor="let icon of icons" [class.selected]="icon.selected" (click)="select(icon.id, $event)"
+      (dblclick)="launch(icon.id)" [style.left]="icon.x + 'px'" [style.top]="icon.y + 'px'">
+      <img src="/assets/img/{{ icon.image }}" />
+      <span>{{ icon.title }}</span>
+    </div>
   </div>
 </div>

@@ -1,1 +1,34 @@
-<img src="/assets/img/enterprise.gif" />
+<style>
+.space {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+
+    background: url('/assets/img/space.png');
+    -webkit-animation: scroll 5s linear infinite;
+    -moz-animation:    scroll 5s linear infinite;
+    animation:         scroll 5s linear infinite;
+}
+
+@keyframes scroll {
+    from { background-position: 0 0; }
+    to { background-position: -144px 0; }
+}
+
+@-webkit-keyframes scroll {
+    from { background-position: 0 0; }
+    to { background-position: -144px 0; }
+}
+
+@-moz-keyframes scroll {
+    from { background-position: 0 0; }
+    to { background-position: -144px 0; }
+}
+</style>
+
+<div class="space">
+    <img src="/assets/img/enterprise.gif" />
+</div>
